@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Module implementation file.
+ */
+
+use Drupal\restful\Http\RequestInterface;
+use Drupal\restful\Plugin\resource\ResourceInterface;
+
+/**
+ * Implements hook_restful_resource_alter().
+ */
+function restful_resources_restful_resource_alter(ResourceInterface &$resource) {
+  // If you need to do some custom logic to alter other modules' resources, this
+  // is the place to do it.
+  if ($resource->getResourceMachineName() == 'lame_articles') {
+    $resource->disable();
+  }
+}
+
+/**
+ * Implements hook_restful_parse_request_alter().
+ */
+function restful_resources_restful_parse_request_alter(RequestInterface &$request) {
+  // Alter the request object in this hook.
+  if ($request->getHeaders()->has('X-Explode')) {
+    throw new \Drupal\restful\Exception\ServerConfigurationException('Boom!');
+  }
+}

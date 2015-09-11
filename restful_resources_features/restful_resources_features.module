@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the restful_resources_features feature.
+ */
+
+include_once 'restful_resources_features.features.inc';

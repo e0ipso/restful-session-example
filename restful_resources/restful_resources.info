@@ -1,0 +1,9 @@
+name = RESTful Resources
+description = Custom module to declare resources
+core = 7.x
+
+dependencies[] = restful (2.x)
+dependencies[] = file_entity
+dependencies[] = uuid
+
+registry_autoload[] = PSR-4
